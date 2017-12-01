@@ -1,0 +1,14 @@
+{
+  "name": "HotRestaurant",
+  "version": "1.0.0",
+  "description": "package",
+  "main": "server.js",
+  "repository": "git@github.com:royhhwang/HotRestaurant.git",
+  "author": "Hussein Fakhreddine <hfakhreddine86@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mysql": "^2.15.0"
+  }
+}
