@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Reservations</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="css/style.css"> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+    <div class="jumbotron" id="jumbotron">
+      <h1 class="display-3 glyphicon glyphicon-fire" style ="text-align: center">Hot Restaurant</h1>
+      <hr class="my-4">
+      <p class="lead">
+        <a href="tables.html"><button type="button" class="btn btn-danger btn-md" id="reservation-btn">View Tables</button></a>
+        <a href="/"><button type="button" class="btn btn-light" id="home-btn">Home</button></a>
+      </p>
+    </div>
+  </div>
+
+  <!-- whats is unique to reserve page -->
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Table Reservations</h3>
+      </div>
+      <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" id="name">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input class="form-control" id="phoneNumber">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" id="email">
+          </div>
+          <div class="form-group">
+            <label>Unique ID</label>
+            <input class="form-control" id="Id">
+          </div>
+          <button type="submit" class="btn btn-primary" id="add-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+  $(".add-btn").on("click", function(event) {
+    event.preventDefault();
+    console.log($("#name").val().trim());
+    var newReservation = {
+      name: $("#name").val().trim(),
+      phoneNumber: $("#phoneNumber").val().trim(),
+      email: $("#email").val().trim(),
+      Id: $("#Id").val().trim()
+    };
+    console.log(newReservation);
+    $.post("/tables", newReservation)
+    .done(function(data) {
+      console.log(data);
+      alert("Adding character...");
+    });
+  });
+</script>
