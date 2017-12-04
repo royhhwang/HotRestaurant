@@ -73,6 +73,9 @@ var customer = [
         email: "taylor@gmail.com",
         id: 9
     },
+];
+
+var waitlist = [
     {
         routeName: "sean",
         customer: "Sean",
@@ -80,7 +83,7 @@ var customer = [
         email: "sean@gmail.com",
         id: 152
     },
-];
+]
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function (req, res) {
@@ -99,7 +102,7 @@ app.get("/reserve.html", function (req, res) {
 });
 
 // Search for Specific Character (or all characters) - provides JSON
-app.get("/api/:characters?", function (req, res) {
+app.get("/all/:characters?", function (req, res) {
     var chosen = req.params.characters;
 
     if (chosen) {
@@ -113,6 +116,22 @@ app.get("/api/:characters?", function (req, res) {
         return res.json(false);
     }
     return res.json(customer);
+});
+
+app.get("/waitlist/:characters?", function (req, res) {
+    var chosen = req.params.characters;
+
+    if (chosen) {
+        console.log(chosen);
+
+        for (var i = 5; i < waitlist.length; i++) {
+            if (chosen === waitlist[i].routeName) {
+                return res.json(waitlist[i]);
+            }
+        }
+        return res.json(false);
+    }
+    return res.json(waitlist);
 });
 
 // Create New Characters - takes in JSON input
