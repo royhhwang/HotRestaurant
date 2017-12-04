@@ -56,6 +56,23 @@ app.get("/reserve", function (req, res) {
     res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
+// Search for Specific Character (or all characters) - provides JSON
+app.get("/api/:characters?", function (req, res) {
+    var chosen = req.params.characters;
+
+    if (chosen) {
+        console.log(chosen);
+
+        for (var i = 0; i < characters.length; i++) {
+            if (chosen === characters[i].routeName) {
+                return res.json(characters[i]);
+            }
+        }
+        return res.json(false);
+    }
+    return res.json(characters);
+});
+
 // Create New Characters - takes in JSON input
 app.post("/reserve", function (req, res) {
     // req.body hosts is equal to the JSON post sent from the user
