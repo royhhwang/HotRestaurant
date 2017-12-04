@@ -37,20 +37,34 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-var customer = [{
-    customer: "Roy",
-    number: 5555555555,
-    email: "roy@gmail.com",
-    id: 21
-}];
+var customer = [
+    {
+        routeName: "roy",
+        customer: "Roy",
+        number: 5555555555,
+        email: "roy@gmail.com",
+        id: 21
+    },
+    {
+        routeName: "hussein",
+        customer: "Hussein",
+        number: 9999999999,
+        email: "Hussein@gmail.com",
+        id: 18
+    },
+];
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
+app.get("/all", function (req, res) {
+    res.json(customer);
+});
+
 app.get("/tables", function (req, res) {
-    res.sendFile(path.join(__dirname, "tables.html"));
+    res.sendFile(path.join(__dirname, "reserve.html"));
 });
 app.get("/reserve", function (req, res) {
     res.sendFile(path.join(__dirname, "reserve.html"));
@@ -63,14 +77,14 @@ app.get("/api/:characters?", function (req, res) {
     if (chosen) {
         console.log(chosen);
 
-        for (var i = 0; i < characters.length; i++) {
-            if (chosen === characters[i].routeName) {
-                return res.json(characters[i]);
+        for (var i = 0; i < customer.length; i++) {
+            if (chosen === customer[i].routeName) {
+                return res.json(customer[i]);
             }
         }
         return res.json(false);
     }
-    return res.json(characters);
+    return res.json(customer);
 });
 
 // Create New Characters - takes in JSON input
@@ -82,8 +96,8 @@ app.post("/reserve", function (req, res) {
 
     console.log(newCustomer);
 
-    characters.push(newCustomer);
-
+    customer.push(newCustomer);
+    console.log(newCustomer);
     res.json(newCustomer);
 });
 

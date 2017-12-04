@@ -5,35 +5,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
+    <center>
+        <div class="jumbotron" id="jumbotron">
+            <h1 class="display-3">Hot Restaurant</h1>
+            <p class="lead"></p>
+            <hr class="my-4">
+            <p class="lead">
+                <a class="btn btn-primary btn-md" href="#" role="button">View Tables</a>
+                <button type="button" class="btn btn-danger btn-md">Make Reservation</button>
+            </p>
+        </div>
+    </center>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Table Reservations</h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control" id="name table-search">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label>Unique ID</label>
+                        <input class="form-control" id="name">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+                </form>
+            </div>
+        </div>
 
+        <script type="text/javascript">
 
+            $(".btn-submit").on("click", function () {
 
-    <script type="text/javascript">
+                var tableSearched = $("#table-search").val().trim();
 
-        $(tableSearch).on("click", function () {
-            
-            var tableSearched = $(customerSearch).val().trim();
+                tableSearched = tableSearched.replace(/\s+/g, "").toLowerCase();
 
-            tableSearched = tableSearched.replace(/\s+/g, "").toLowerCase();
-
-            $.get("/api/" + tableSearched, function (data) {
-                console.log(data);
-                for (i = 0; i < data.length; i++) {
-                    $("tables").show();
-                    $("#name").text(data.name);
-                    $("#number").text(data.name);
-                    $("#email").text(data.email);
-                    $("#id").text(data.id);
-                }
+                $.get("/api/" + tableSearched, function (data) {
+                    console.log(data);
+                    for (i = 0; i < data.length; i++) {
+                        $("tables").show();
+                        $("#name").text(data.name);
+                        $("#number").text(data.name);
+                        $("#email").text(data.email);
+                        $("#id").text(data.id);
+                    }
+                })
             })
-        })
 
-    </script>
-
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 
 </html>
