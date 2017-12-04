@@ -63,10 +63,10 @@ app.get("/all", function (req, res) {
     res.json(customer);
 });
 
-app.get("/tables", function (req, res) {
-    res.sendFile(path.join(__dirname, "reserve.html"));
+app.get("/table.html", function (req, res) {
+    res.sendFile(path.join(__dirname, "table.html"));
 });
-app.get("/reserve", function (req, res) {
+app.get("/reserve.html", function (req, res) {
     res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
