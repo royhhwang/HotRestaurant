@@ -1,39 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <title>Hot Restaurant</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
 </head>
 
 <body>
-
-
-
-    <script type="text/javascript">
-
-        $(tableSearch).on("click", function () {
-            
-            var tableSearched = $(customerSearch).val().trim();
-
-            tableSearched = tableSearched.replace(/\s+/g, "").toLowerCase();
-
-            $.get("/api/" + tableSearched, function (data) {
-                console.log(data);
-                for (i = 0; i < data.length; i++) {
-                    $("tables").show();
-                    $("#name").text(data.name);
-                    $("#number").text(data.name);
-                    $("#email").text(data.email);
-                    $("#id").text(data.id);
-                }
-            })
-        })
-
-    </script>
-
+    <center>
+        <div class="jumbotron" id="jumbotron">
+            <h1 class="display-3">Hot Restaurant</h1>
+            <p class="lead"></p>
+            <hr class="my-4">
+            <p class="lead">
+                <a class="btn btn-primary btn-md" href="tables.html" role="button">View Tables</a>
+                <a href="reserve.html"><button type="button" class="btn btn-danger">Make Reservation</button></a>
+            </p>
+        </div>
+    </center>
 </body>
 
 </html>
