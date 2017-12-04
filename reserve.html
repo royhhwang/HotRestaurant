@@ -4,20 +4,26 @@
 <head>
   <meta charset="utf-8">
   <title>Reservations</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<!-- <link rel="stylesheet" href="css/style.css"> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
 
-    <div class="container">
+  <div class="container">
     <div class="jumbotron" id="jumbotron">
-      <h1 class="display-3 glyphicon glyphicon-fire" style ="text-align: center">Hot Restaurant</h1>
+      <h1 class="glyphicon glyphicon-fire"></h1>
+      <h1 style="font-family: Georgia, 'Times New Roman', Times, serif; display:inline">Hot Restaurant</h1>
       <hr class="my-4">
       <p class="lead">
-        <a href="tables.html"><button type="button" class="btn btn-danger btn-md" id="reservation-btn">View Tables</button></a>
-        <a href="/"><button type="button" class="btn btn-light" id="home-btn">Home</button></a>
+        <a href="tables.html">
+          <button type="button" class="btn btn-danger btn-md" id="reservation-btn">View Tables</button>
+        </a>
+        <a href="/">
+          <button type="button" class="btn btn-light" id="home-btn">Home</button>
+        </a>
       </p>
     </div>
   </div>
@@ -52,20 +58,20 @@
     </div>
 
     <script type="text/javascript">
-  $(".add-btn").on("click", function(event) {
-    event.preventDefault();
-    console.log($("#name").val().trim());
-    var newReservation = {
-      name: $("#name").val().trim(),
-      phoneNumber: $("#phoneNumber").val().trim(),
-      email: $("#email").val().trim(),
-      Id: $("#Id").val().trim()
-    };
-    console.log(newReservation);
-    $.post("/tables", newReservation)
-    .done(function(data) {
-      console.log(data);
-      alert("Adding character...");
-    });
-  });
-</script>
+      $(".add-btn").on("click", function (event) {
+        event.preventDefault();
+        console.log($("#name").val().trim());
+        var newReservation = {
+          name: $("#name").val().trim(),
+          phoneNumber: $("#phoneNumber").val().trim(),
+          email: $("#email").val().trim(),
+          Id: $("#Id").val().trim()
+        };
+        console.log(newReservation);
+        $.post("/tables", newReservation)
+          .done(function (data) {
+            console.log(data);
+            alert("Adding character...");
+          });
+      });
+    </script>

@@ -13,8 +13,9 @@
 <body>
 
   <div class="container">
-    <div class="jumbotron" id="jumbotron">
-      <h1 class="display-3 glyphicon glyphicon-fire" style="text-align: center">Hot Restaurant</h1>
+    <div class="jumbotron">
+      <h1 class="glyphicon glyphicon-fire"></h1>
+      <h1 style="font-family: Georgia, 'Times New Roman', Times, serif; display:inline">Hot Restaurant</h1>
       <hr class="my-4">
       <p class="lead">
         <a href="reserve.html">
@@ -46,8 +47,10 @@
         </div>
       </div>
     </div>
-  </div>
+    <a href="/all" class="table-json">View All Table Info |</a>
+    <a href="/waitlist" class="table-json">View All Table Info</a>
 
+  </div>
 
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -77,7 +80,7 @@
           var $wFont = $("<h2>");
           var $wItem = $("<span>").addClass("badge");
           //$wBody.append($wFont);
-          $wItem.append(i+1);
+          $wItem.append(i + 1);
           $wFont.append($wItem);
           $wFont.append("    " + data[i].id);
           $waitingDiv.append($wFont);
