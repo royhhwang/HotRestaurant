@@ -50,7 +50,35 @@ var customer = [
         customer: "Hussein",
         number: 9999999999,
         email: "Hussein@gmail.com",
-        id: 18
+        id: 1
+    },
+    {
+        routeName: "ren",
+        customer: "Ren",
+        number: 9999999999,
+        email: "ren@gmail.com",
+        id: 2
+    },
+    {
+        routeName: "quentin",
+        customer: "Quentin",
+        number: 9999999999,
+        email: "quentin@gmail.com",
+        id: 3
+    },
+    {
+        routeName: "taylor",
+        customer: "Taylor",
+        number: 9999999999,
+        email: "taylor@gmail.com",
+        id: 9
+    },
+    {
+        routeName: "sean",
+        customer: "Sean",
+        number: 9999999999,
+        email: "sean@gmail.com",
+        id: 152
     },
 ];
 
@@ -63,8 +91,8 @@ app.get("/all", function (req, res) {
     res.json(customer);
 });
 
-app.get("/table.html", function (req, res) {
-    res.sendFile(path.join(__dirname, "table.html"));
+app.get("/tables.html", function (req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"));
 });
 app.get("/reserve.html", function (req, res) {
     res.sendFile(path.join(__dirname, "reserve.html"));

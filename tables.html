@@ -11,68 +11,78 @@
 </head>
 
 <body>
-  
-    <div class="container">
-        <div class="jumbotron" id="jumbotron">
-          <h1 class="display-3 glyphicon glyphicon-fire" style ="text-align: center">Hot Restaurant</h1>
-          <hr class="my-4">
-          <p class="lead">
-            <button type="button" class="btn btn-danger btn-md" id="reservation-btn">Make Reservation</button>
-            <button type="button" class="btn btn-light" id="home-btn">Home</button>
-          </p>
+
+  <div class="container">
+    <div class="jumbotron" id="jumbotron">
+      <h1 class="display-3 glyphicon glyphicon-fire" style="text-align: center">Hot Restaurant</h1>
+      <hr class="my-4">
+      <p class="lead">
+        <a href="reserve.html">
+          <button type="button" class="btn btn-danger btn-md" id="reservation-btn">Make Reservation</button>
+        </a>
+        <a href="/">
+          <button type="button" class="btn btn-light" id="home-btn">Home</button>
+        </a>
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default ">
+          <div class="panel-heading ">Current Reservations</div>
+          <div class="panel-body reservation">
+            reservation items will be populated here
+
+          </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-12">
-               <div class="panel panel-default ">
-                   <div class="panel-heading ">Current Reservations</div>
-                   <div class="panel-body reservation">
-                     reservation items will be populated here
-                     <h2>
-                       <span class="badge">1</span>
-                       customer's reservation id
-                     </h2>
-                   </div>
-                 </div>
-             
-                 <div class="panel panel-default">
-                   <div class="panel-heading">
-                     <h3 class="panel-title">Waiting List</h3>
-                   </div>
-                   <div class="panel-body waiting">
-                     waiting list items will be populated here
-                   </div>
-                 </div>
-            </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Waiting List</h3>
           </div>
+          <div class="panel-body waiting">
+            waiting list items will be populated here
+          </div>
+        </div>
       </div>
-  
-   
-  
+    </div>
+  </div>
+
+
+
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
     jQuery(function ($) {
-      // generate items inside reservation panel 
-      var $reserveDiv = $(".reservation");
-      //var $rBody = $("<div>").addClass("panel-body");
-      var $rFont = $("<h2>");
-      var $rItem = $("<span>").addClass("badge");
-      $rItem.append(2);
-      $rFont.append($rItem);
-      $rFont.append("2nd customer's unique id");
-      $reserveDiv.append($rFont);
 
-      // generate items insidie waiting list
-      var $waitingDiv = $(".waiting");
-      //var $wBody = $("<div>").addClass("panel-body");
-      var $wFont = $("<h2>");
-      var $wItem = $("<span>").addClass("badge");
-      //$wBody.append($wFont);
-      $wItem.append(1);
-      $wFont.append($wItem);
-      $wFont.append("customer's unique id");
-      $waitingDiv.append($wFont);    
+      $.get("/all", function (data) {
+        console.log(data);
 
+        // generate items inside reservation panel 
+        for (var i = 0; i < 5; i++) {
+
+          var $reserveDiv = $(".reservation");
+          //var $rBody = $("<div>").addClass("panel-body");
+          var $rFont = $("<h2>");
+          var $rItem = $("<span>").addClass("badge");
+          $rItem.append(i + 1);
+          $rFont.append($rItem);
+          $rFont.append("  " + data[i].id);
+          $reserveDiv.append($rFont);
+
+          // generate items insidie waiting list
+        }
+        for (var i = 5; i < data.length; i++) {
+          var $waitingDiv = $(".waiting");
+          //var $wBody = $("<div>").addClass("panel-body");
+          var $wFont = $("<h2>");
+          var $wItem = $("<span>").addClass("badge");
+          //$wBody.append($wFont);
+          $wItem.append(i+1);
+          $wFont.append($wItem);
+          $wFont.append("    " + data[i].id);
+          $waitingDiv.append($wFont);
+        }
+      })
     })// end of jquery
 
   </script>
