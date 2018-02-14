@@ -148,21 +148,6 @@ app.post("/reserve", function (req, res) {
     res.json(newCustomer);
 });
 
-// MYSQL
-// function makeReservation(input) {
-//     var customer = [{
-//         name: "name",
-//         number: "number",
-//         email: "email",
-//         id: "unique_id"
-//     }];
-//     var query = "SELECT * FROM customer";
-//     connection.query(query, function (err, res) {
-//         if (err) throw err;
-//         console.log(res);
-//     });
-// }
-
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 });
